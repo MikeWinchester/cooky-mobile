@@ -1,0 +1,81 @@
+{
+  "expo": {
+    "name": "Cooky App de Recetas",
+    "slug": "cooky-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./public/icon512x512.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./public/icon512x512.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FFF8EC"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.cooky.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./public/icon512x512.png",
+        "backgroundColor": "#FFF8EC"
+      },
+      "package": "com.cooky.app",
+      "softwareKeyboardLayoutMode": "pan",
+      "windowSoftInputMode": "adjustResize",
+      "navigationBar": {
+        "visible": "leanback",
+        "backgroundColor": "#FFF8EC"
+      }
+    },
+    "web": {
+      "favicon": "./public/icon192x192.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-notifications",
+        {
+          "icon": "./public/icon192x192.png",
+          "color": "#FE6700"
+        }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Permitir a Cooky acceder a tu cámara para tomar fotos de ingredientes y recetas."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Permitir a Cooky acceder a tus fotos para seleccionar imágenes de ingredientes y recetas."
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Permitir a Cooky acceder a tu ubicación para encontrar tiendas cercanas."
+        }
+      ],
+      "expo-navigation-bar"
+    ],
+    "androidStatusBar": {
+      "barStyle": "dark-content",
+      "backgroundColor": "transparent",
+      "translucent": true
+    },
+    "scheme": "cooky",
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "your-project-id"
+      }
+    }
+  }
+}
