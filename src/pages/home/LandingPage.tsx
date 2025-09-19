@@ -4,46 +4,37 @@ import { useRouter } from 'expo-router'
 import { Ionicons } from '@expo/vector-icons'
 import Button from '../../components/common/Button'
 import CookyLogo from '../../components/ui/CookyLogo'
-import ImmersiveIndicator from '../../components/common/ImmersiveIndicator'
 import { colors, spacing, typography } from '../../styles/globalStyles'
-import { useImmersiveMode } from '../../hooks/useImmersiveMode'
 import React from 'react'
 
 function LandingPage() {
   const router = useRouter()
-  const { isImmersive } = useImmersiveMode(true)
 
-  // Estilos dinámicos basados en immersive mode
+  // Estilos estáticos
   const dynamicStyles = StyleSheet.create({
     container: {
       ...styles.container,
-      backgroundColor: isImmersive ? colors.bg.primary : colors.bg.primary,
+      backgroundColor: colors.bg.primary,
     },
     contentContainer: {
       ...styles.contentContainer,
-      justifyContent: isImmersive ? 'space-between' : 'center',
-      paddingBottom: isImmersive ? 0 : spacing.xl,
+      justifyContent: 'center',
+      paddingBottom: spacing.xl,
       backgroundColor: colors.bg.primary,
     },
     heroSection: {
       ...styles.heroSection,
-      paddingBottom: isImmersive ? spacing.lg : spacing['2xl'],
+      paddingBottom: spacing['2xl'],
       backgroundColor: colors.bg.primary,
     },
     buttonContainer: {
       ...styles.buttonContainer,
-      marginBottom: isImmersive ? spacing.lg : 0,
+      marginBottom: 0,
     }
   })
 
   return (
     <View style={dynamicStyles.container}>
-      <StatusBar 
-        backgroundColor={colors.bg.primary} 
-        barStyle="dark-content" 
-        translucent={isImmersive}
-      />
-      <ImmersiveIndicator isImmersive={isImmersive} />
       <ScrollView 
         style={styles.scrollView} 
         contentContainerStyle={dynamicStyles.contentContainer}

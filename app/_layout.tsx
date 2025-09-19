@@ -7,6 +7,7 @@ import { RegistrationProvider } from '../src/contexts/RegistrationContext';
 import React from 'react';
 
 export default function RootLayout() {
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>
@@ -20,7 +21,7 @@ export default function RootLayout() {
             <Stack.Screen name="(auth)" />
             <Stack.Screen name="(app)" />
           </Stack>
-          <StatusBar style="auto" />
+          <StatusBar style="light" backgroundColor="#000000" translucent={false} />
           <Toast />
         </RegistrationProvider>
       </SafeAreaProvider>

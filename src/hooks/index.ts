@@ -10,4 +10,3 @@ export { useRegistration } from './useRegistration';
 export { useCamera } from './useCamera';
 export { useLocation } from './useLocation';
 export { useNotifications } from './useNotifications';
-export { useImmersiveMode } from './useImmersiveMode';

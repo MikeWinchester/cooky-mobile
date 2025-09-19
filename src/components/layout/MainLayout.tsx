@@ -1,8 +1,7 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, StatusBar, Dimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Navigation from './Navigation';
-import { useImmersiveMode } from '../../hooks/useImmersiveMode';
 
 interface AppLayoutProps {
   children: React.ReactNode;
@@ -10,18 +9,26 @@ interface AppLayoutProps {
 
 const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   const insets = useSafeAreaInsets();
-  const { isImmersive } = useImmersiveMode(true);
+  
+  // Calcular altura total del navbar (status bar + header)
+  const navbarHeight = insets.top + 50; // 50px para el header
 
   return (
-    <View style={[styles.container, { 
-      paddingTop: isImmersive ? 0 : insets.top,
-      paddingBottom: isImmersive ? 0 : insets.bottom,
-      backgroundColor: '#FFF8EC'
-    }]}>
-      <Navigation />
-      <View style={[styles.content, { backgroundColor: '#FFF8EC' }]}>
+    <View style={styles.container}>
+      {/* Fondo negro para la barra de navegación del sistema */}
+      <View style={[styles.systemNavBackground, { height: insets.bottom }]} />
+      
+      {/* Contenido principal */}
+      <View style={[styles.content, { 
+        backgroundColor: '#FFF8EC',
+        paddingBottom: insets.bottom,
+        paddingTop: navbarHeight,
+      }]}>
         {children}
       </View>
+      
+      {/* Navigation con posición absoluta */}
+      <Navigation />
     </View>
   );
 };
@@ -30,6 +37,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFF8EC',
+  },
+  systemNavBackground: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: '#000000',
+    zIndex: 1000,
   },
   content: {
     flex: 1,

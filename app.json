@@ -27,8 +27,8 @@
       "softwareKeyboardLayoutMode": "pan",
       "windowSoftInputMode": "adjustResize",
       "navigationBar": {
-        "visible": "leanback",
-        "backgroundColor": "#FFF8EC"
+        "visible": false,
+        "backgroundColor": "transparent"
       }
     },
     "web": {
@@ -66,7 +66,12 @@
     "androidStatusBar": {
       "barStyle": "dark-content",
       "backgroundColor": "transparent",
-      "translucent": true
+      "translucent": false,
+      "hidden": true
+    },
+    "androidNavigationBar": {
+      "visible": false,
+      "backgroundColor": "transparent"
     },
     "scheme": "cooky",
     "extra": {

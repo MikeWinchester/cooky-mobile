@@ -2,10 +2,12 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useRouter, usePathname } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function Navigation() {
   const router = useRouter();
   const pathname = usePathname();
+  const insets = useSafeAreaInsets();
 
   const handleNavigation = (route: string) => {
     router.push(route as any);
@@ -37,7 +39,7 @@ export default function Navigation() {
   ];
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { paddingTop: insets.top }]}>
       {/* Header Navigation */}
       <View style={styles.header}>
         <View style={styles.logoContainer}>
@@ -70,7 +72,12 @@ export default function Navigation() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 1000,
+    backgroundColor: '#000000',
   },
   header: {
     flexDirection: 'row',
@@ -79,7 +86,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF8A65',
     paddingHorizontal: 16,
     paddingVertical: 12,
-    paddingTop: 50, // Para el status bar
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
